@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
-const url = 'mongodb://localhost:27017/test';
 
 const config = require('./config');
 
@@ -36,7 +35,7 @@ const getUsers = (db, callback) => {
 
 app.post('/users', (req, res) => {
 
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(config.mongoUri, function(err, db) {
     insertUser(db, req.body, (err) => err ?
       res.send({
         success: false
@@ -51,7 +50,7 @@ app.post('/users', (req, res) => {
 
 app.get('/users', (req, res) => {
 
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(config.mongoUri, function(err, db) {
     getUsers(db, (err, data) => err ?
       res.send({
         success: false
