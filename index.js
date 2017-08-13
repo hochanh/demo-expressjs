@@ -4,6 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const url = 'mongodb://localhost:27017/test';
 
+const config = require('./config');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({
@@ -69,6 +70,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(3000, function() {
-  console.log('Example app listening on port 3000!');
+app.listen(config.PORT, function() {
+  console.log(`Demo app listening on port ${config.PORT}!`);
 })
