@@ -64,6 +64,11 @@ app.get('/users', (req, res) => {
 })
 
 
+app.get('/', (req, res) => {
+  res.send('Hello, I am working!');
+})
+
+
 app.listen(3000, function() {
   console.log('Example app listening on port 3000!');
 })
